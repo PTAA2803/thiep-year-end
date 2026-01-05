@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh sách khách mời - YEP Khoa Xét Nghiệm</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container list-container">
+        <h1>Danh Sách Khách Mời</h1>
+        <p class="subtitle">Year End Party - Khoa Xét Nghiệm</p>
+        <div id="guest-list" class="guest-list">
+            </div>
+    </div>
+
+    <script>
+        // Danh sách tên khách mời (Bạn có thể thêm sửa xóa tại đây)
+        const guests = [
+            "Nguyễn Thị Thảo Vy", 
+            "Nguyễn Văn Toàn", 
+            "Lê Thị Mỹ Duyên", 
+            "Tô Hải Long Hồ", 
+            "Tăng Thị Kim Phượng", 
+            "Nguyễn Khánh Huy", 
+            "Nguyễn Thị Ân Mỹ", 
+            "Hà Hoa Huệ", 
+            "Nguyễn Phạm Tường Vân", 
+            "Dương Công Thịnh", 
+            "Phạm Hoàng Thư", 
+            "Mai Thanh Phong", 
+            "Nguyễn Thị Thanh Huyền", 
+            "Phan Trương Thị Kim Cương", 
+            "Lâm Tú Châu", 
+            "Lê Triệu Thùy Trang"
+        ];
+
+        const listContainer = document.getElementById('guest-list');
+
+        // Tạo danh sách liên kết
+        guests.forEach(name => {
+            const link = document.createElement('a');
+            // Chuyển hướng sang invite.html và kèm theo tham số tên
+            link.href = `invite.html?name=${encodeURIComponent(name)}`;
+            link.className = 'guest-item';
+            link.innerText = name;
+            listContainer.appendChild(link);
+        });
+    </script>
+</body>
+</html>

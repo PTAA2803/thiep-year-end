@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thiệp Mời Year End Party</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="card-container">
+        <div class="invitation-card">
+            <div class="header-decor">✨ YEAR END PARTY ✨</div>
+            
+            <div class="host-name">
+                KHOA XÉT NGHIỆM<br>
+                BỆNH VIỆN NAM SÀI GÒN
+            </div>
+            
+            <p class="invite-text">Trân trọng kính mời:</p>
+            
+            <h2 id="guest-name" class="guest-name">...</h2>
+
+            <p class="details">
+                Đến tham dự buổi tiệc tất niên ấm cúng cùng chúng tôi.
+            </p>
+
+            <div class="time-location">
+                <p>🕒 Thời gian: 18:00 - Ngày .../.../20...</p>
+                <p>📍 Địa điểm: [Điền địa điểm tại đây]</p>
+            </div>
+
+            <div class="footer-decor">Rất hân hạnh được đón tiếp!</div>
+            
+            <a href="index.html" class="back-btn">← Quay lại danh sách</a>
+        </div>
+    </div>
+
+    <script>
+        // Lấy tên từ thanh địa chỉ (URL)
+        const urlParams = new URLSearchParams(window.location.search);
+        const name = urlParams.get('name');
+
+        // Hiển thị tên vào thiệp
+        if (name) {
+            document.getElementById('guest-name').innerText = name;
+        } else {
+            document.getElementById('guest-name').innerText = "Quý Khách";
+        }
+    </script>
+</body>
+</html>
