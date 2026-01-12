@@ -12,39 +12,55 @@
         <h1>Danh Sách Khách Mời</h1>
         <p class="subtitle">Year End Party - Khoa Xét Nghiệm</p>
         <div id="guest-list" class="guest-list">
-            </div>
+        </div>
     </div>
 
     <script>
-        // Danh sách tên khách mời (Bạn có thể thêm sửa xóa tại đây)
+        // Danh sách khách mời kèm danh xưng cụ thể
+        // title: "" (để trống) cho trường hợp không cần danh xưng
         const guests = [
-            "Nguyễn Thị Thảo Vy", 
-            "Nguyễn Văn Toàn", 
-            "Lê Thị Mỹ Duyên", 
-            "Tô Hải Long Hồ", 
-            "Tăng Thị Kim Phượng", 
-            "Nguyễn Khánh Huy", 
-            "Nguyễn Thị Ân Mỹ", 
-            "Hà Hoa Huệ", 
-            "Nguyễn Phạm Tường Vân", 
-            "Dương Công Thịnh", 
-            "Phạm Hoàng Thư", 
-            "Mai Thanh Phong", 
-            "Nguyễn Thị Thanh Huyền", 
-            "Phan Trương Thị Kim Cương", 
-            "Lâm Tú Châu", 
-            "Lê Triệu Thùy Trang"
+            { name: "Nguyễn Thị Thảo Vy", title: "Chị" },
+            { name: "Nguyễn Văn Toàn", title: "Anh" },
+            { name: "Lê Thị Mỹ Duyên", title: "Chị" },
+            { name: "Tô Hải Long Hồ", title: "Anh" },
+            { name: "Tăng Thị Kim Phượng", title: "Cô" }, // Yêu cầu đặc biệt
+            { name: "Nguyễn Khánh Huy", title: "" },     // Yêu cầu đặc biệt (Không danh xưng)
+            { name: "Nguyễn Thị Ân Mỹ", title: "Chị" },
+            { name: "Hà Hoa Huệ", title: "Chị" },
+            { name: "Nguyễn Phạm Tường Vân", title: "Chị" },
+            { name: "Dương Công Thịnh", title: "Chú" },   // Yêu cầu đặc biệt
+            { name: "Phạm Hoàng Thư", title: "Chị" },
+            { name: "Mai Thanh Phong", title: "Anh" },
+            { name: "Nguyễn Thị Thanh Huyền", title: "Chị" },
+            { name: "Phan Trương Thị Kim Cương", title: "Chị" },
+            { name: "Lâm Tú Châu", title: "Chị" },
+            { name: "Lê Triệu Thùy Trang", title: "Chị" },
+            { name: "Nguyễn Thị Minh Ngọc", title: "" }   // Yêu cầu đặc biệt (Không danh xưng)
         ];
 
         const listContainer = document.getElementById('guest-list');
 
         // Tạo danh sách liên kết
-        guests.forEach(name => {
+        guests.forEach(guest => {
             const link = document.createElement('a');
-            // Chuyển hướng sang invite.html và kèm theo tham số tên
-            link.href = `invite.html?name=${encodeURIComponent(name)}`;
+            
+            // Xử lý logic ghép tên
+            let displayName = "";
+            if (guest.title === "") {
+                // Nếu danh xưng để trống -> Chỉ lấy tên
+                displayName = guest.name;
+            } else {
+                // Nếu có danh xưng -> Ghép Danh xưng + Tên
+                displayName = `${guest.title} ${guest.name}`;
+            }
+
+            // Chuyển hướng sang invite.html
+            link.href = `invite.html?name=${encodeURIComponent(displayName)}`;
             link.className = 'guest-item';
-            link.innerText = name;
+            
+            // Hiển thị tên trong danh sách (Chỉ hiện tên gốc cho gọn)
+            link.innerText = guest.name; 
+            
             listContainer.appendChild(link);
         });
     </script>
